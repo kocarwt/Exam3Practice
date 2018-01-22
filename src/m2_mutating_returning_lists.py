@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  MUTATING  and  RETURNING-NEW  LISTS.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and William Kocar.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -37,7 +37,7 @@ def main():
 def run_test_doubler():
     """ Tests the    doubler    function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  doubler  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     #
@@ -82,9 +82,35 @@ def run_test_doubler():
     # ------------------------------------------------------------------
     # TO DO 2 (continued): Add your ADDITIONAL test(s) here:
     # ------------------------------------------------------------------
+    arg1 = [5, -10, 30, 25]
+    arg2 = [2, 6, 12]
+    correct_arg1_after = [10, -20, 60, 50]
+    correct_arg2_after = [2, 6, 12]
+    expected = [4, 12, 24]
 
+    print()
+    print('BEFORE the function call:')
+    print('  Argument 1 is:', arg1)
+    print('  Argument 2 is:', arg2)
+
+    answer = doubler(arg1, arg2)
+
+    print('AFTER the function call:')
+    print('  Argument 1 is:       ', arg1)
+    print('  Argument 1 should be:', correct_arg1_after)
+    print('  Argument 2 is:       ', arg2)
+    print('  Argument 2 should be:', correct_arg2_after)
+    print('The returned value is:       ', answer)
+    print('The returned value should be:', expected)
 
 def doubler(list1, list2):
+    y = []
+    for k in range(len(list1)):
+        list1[k] = list1[k]*2
+    for k in range(len(list2)):
+        y = y + [list2[k]*2]
+    return y
+
     """
     Both arguments are lists of integers.  This function:
       -- MUTATEs the first list by doubling each number in the list
@@ -102,7 +128,7 @@ def doubler(list1, list2):
         :type list2: list of int
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------

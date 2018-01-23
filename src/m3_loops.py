@@ -138,15 +138,17 @@ def run_test_practice_problem3():
 
 
 def practice_problem3(start, n, threshold):
+
     y = []
     count = 0
-    for k in range(start, 2000000 , 1):
-        x = math.sin(k) + math.cos(k)
+    while count <= n:
+        x = math.sin(start) + math.cos(start)
         if x > threshold:
             count = count + 1
-            y = y +[k]
+            y = y +[start]
             if count == n:
                 return y
+        start = start + 1
 
 
     """

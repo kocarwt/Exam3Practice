@@ -141,7 +141,7 @@ def practice_problem3(start, n, threshold):
 
     y = []
     count = 0
-    while count <= n:
+    while count < n:
         x = math.sin(start) + math.cos(start)
         if x > threshold:
             count = count + 1
@@ -149,6 +149,8 @@ def practice_problem3(start, n, threshold):
             if count == n:
                 return y
         start = start + 1
+    return y
+
 
 
     """

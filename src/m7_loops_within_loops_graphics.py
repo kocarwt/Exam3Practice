@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and William Kocar.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -64,6 +64,36 @@ def run_test_hourglass():
 
 
 def hourglass(window, n, point, radius, color):
+    original_x = point.x
+    original_y = point.y
+    radius = radius
+
+    x = original_x
+    y = original_y
+    for k in range(n):  # Loop through the rows
+        for j in range(k+1):  # Loop through the columns
+            new_circle = rg.Circle(rg.Point(x, y), radius)
+            new_circle.fill_color = color
+            new_circle.attach_to(window.initial_canvas)
+            window.render(0.1)
+
+            x = x + (2 * radius)  # Move x to the right, for next circle
+
+        y = y + 1.75 * radius  # Move y down, for the next row of circles
+        x = original_x - (radius*(k+1))  # Reset x to the left-edge, for the next row
+    x = original_x
+    y = original_y
+    for k in range(n):
+        for j in range(k + 1):  # Loop through the columns
+            new_circle = rg.Circle(rg.Point(x, y), radius)
+            new_circle.fill_color = color
+            new_circle.attach_to(window.initial_canvas)
+            window.render(0.1)
+
+            x = x + (2 * radius)  # Move x to the right, for next circle
+
+        y = y - 1.75*radius  # Move y down, for the next row of circles
+        x = original_x - (radius*(k+1))  # Reset x to the left-edge, for the next row
     """
     See   hourglass_picture.pdf   in this project for pictures that may
     help you better understand the following specification:

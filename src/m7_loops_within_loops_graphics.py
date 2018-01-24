@@ -29,11 +29,12 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 
 import rosegraphics as rg
+import math
 
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_hourglass()
+    ##run_test_hourglass()
     run_test_many_hourglasses()
 
 
@@ -119,7 +120,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -167,6 +168,24 @@ def run_test_many_hourglasses():
 
 
 def many_hourglasses(window, square, m, colors):
+    s = 0
+    for k in range(m):
+        c = square.center
+        l = square.length_of_each_side / 2
+        p1 = rg.Point(c.x + k * l + l, c.y + (k * math.sqrt(3) * l + l))
+        p2 = rg.Point(c.x - k * l - l, c.y - (k * math.sqrt(3) * l + l))
+        rectangle = rg.Rectangle(p1, p2)
+        c.x = c.x + (3 + 2 * k) * l
+        rectangle.attach_to(window)
+        window.render()
+        while s < len(colors):
+            a = colors[s]
+            if s == len(colors) - 1:
+                s = -1
+            s = s + 1
+            break
+        hourglass(window, k + 1, rectangle.get_center(), l, a)
+
     """
     See   many_hourglasses_picture.pdf   in this project for pictures that may
     help you better understand the following specification:
